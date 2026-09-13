@@ -19,11 +19,12 @@
           colors: {
             cream: '#faf5e9',
             creamdeep: '#efe6cf',
-            gold: '#a9803f',
-            goldlight: '#c9a86a',
-            ink: '#4a3f2c',
-            inksoft: '#6b5d44',
-            offwhite: '#fffdf8',
+            gold: '#b89255',
+            goldlight: '#d4b783',
+            ink: '#3a3122',
+            inksoft: '#5c503b',
+            offwhite: '#ffffff',
+            rosegold: '#d8b2b2'
           },
           fontFamily: {
             serifsi: ['"Noto Serif Sinhala"', 'serif'],
@@ -32,60 +33,62 @@
           keyframes: {
             floaty1: {
               '0%,100%': { transform: 'translate(0,0)' },
-              '50%': { transform: 'translate(40px,30px)' },
+              '50%': { transform: 'translate(50px,30px)' },
             },
             floaty2: {
               '0%,100%': { transform: 'translate(0,0)' },
-              '50%': { transform: 'translate(-30px,-40px)' },
+              '50%': { transform: 'translate(-40px,-50px)' },
             },
             pulseglow: {
-              '0%,100%': { opacity: 0.35 },
-              '50%': { opacity: 0.6 },
+              '0%,100%': { opacity: 0.25, transform: 'scale(1)' },
+              '50%': { opacity: 0.6, transform: 'scale(1.15)' },
             },
             drift: {
-              '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: 0 },
-              '8%': { opacity: 0.85 },
-              '92%': { opacity: 0.85 },
-              '100%': { transform: 'translateY(-115vh) translateX(30px) rotate(300deg)', opacity: 0 },
+              '0%': { transform: 'translateY(10vh) translateX(0) rotate(0deg)', opacity: 0 },
+              '10%': { opacity: 0.9 },
+              '90%': { opacity: 0.9 },
+              '100%': { transform: 'translateY(-110vh) translateX(40px) rotate(360deg)', opacity: 0 },
             },
             driftrev: {
-              '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: 0 },
-              '8%': { opacity: 0.7 },
-              '92%': { opacity: 0.7 },
-              '100%': { transform: 'translateY(-115vh) translateX(-36px) rotate(-260deg)', opacity: 0 },
+              '0%': { transform: 'translateY(10vh) translateX(0) rotate(0deg)', opacity: 0 },
+              '10%': { opacity: 0.8 },
+              '90%': { opacity: 0.8 },
+              '100%': { transform: 'translateY(-110vh) translateX(-40px) rotate(-360deg)', opacity: 0 },
             },
             fadeDown: {
-              from: { opacity: 0, transform: 'translateY(-14px)' },
+              from: { opacity: 0, transform: 'translateY(-20px)' },
               to: { opacity: 1, transform: 'translateY(0)' },
             },
             heroIn: {
-              from: { opacity: 0, transform: 'translateY(24px) scale(.98)' },
+              from: { opacity: 0, transform: 'translateY(40px) scale(0.92)' },
               to: { opacity: 1, transform: 'translateY(0) scale(1)' },
             },
             bob: {
               '0%,100%': { transform: 'translateY(0)', opacity: 0.6 },
-              '50%': { transform: 'translateY(8px)', opacity: 1 },
+              '50%': { transform: 'translateY(12px)', opacity: 1 },
             },
-            tick: {
-              '0%': { transform: 'translateY(-8px)', opacity: 0 },
-              '100%': { transform: 'translateY(0)', opacity: 1 },
-            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            }
           },
           animation: {
-            floaty1: 'floaty1 16s ease-in-out infinite',
-            floaty2: 'floaty2 18s ease-in-out infinite',
-            pulseglow: 'pulseglow 10s ease-in-out infinite',
-            fadeDown: 'fadeDown .9s ease forwards',
-            heroIn: 'heroIn 1s cubic-bezier(.2,.8,.2,1) .25s forwards',
-            bob: 'bob 2.2s ease-in-out infinite',
-            tick: 'tick .35s ease',
+            floaty1: 'floaty1 25s ease-in-out infinite',
+            floaty2: 'floaty2 28s ease-in-out infinite',
+            pulseglow: 'pulseglow 8s ease-in-out infinite',
+            fadeDown: 'fadeDown 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            heroIn: 'heroIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards',
+            bob: 'bob 3s ease-in-out infinite',
             drift: 'drift linear infinite',
             driftrev: 'driftrev linear infinite',
+            shimmer: 'shimmer 2.5s infinite'
           },
           boxShadow: {
-            soft: '0 10px 30px rgba(74,63,44,0.10)',
-            deep: '0 24px 60px rgba(74,63,44,0.16)',
-            deeper: '0 32px 70px rgba(74,63,44,0.22)',
+            glass: '0 8px 32px 0 rgba(184, 146, 85, 0.15)',
+            glasshover: '0 15px 45px 0 rgba(184, 146, 85, 0.3)',
+            deep: '0 25px 60px -12px rgba(58, 49, 34, 0.25)',
+            deeper: '0 40px 80px -15px rgba(58, 49, 34, 0.35)',
+            envelope: '0 20px 60px -10px rgba(138, 107, 60, 0.4)',
           },
         },
       },
@@ -96,26 +99,67 @@
     body {
       font-family: 'Noto Sans Sinhala', 'Noto Serif Sinhala', serif;
       background:
-        radial-gradient(circle at 20% 0%, rgba(244,199,178,0.55), transparent 55%),
-        radial-gradient(circle at 100% 30%, rgba(233,197,150,0.45), transparent 55%),
-        radial-gradient(circle at 0% 85%, rgba(216,178,196,0.35), transparent 55%),
-        linear-gradient(160deg, #fbeee0 0%, #f7ecd8 35%, #f3e6d3 60%, #f9e4de 100%);
+        radial-gradient(circle at 15% 10%, rgba(244, 199, 178, 0.7), transparent 50%),
+        radial-gradient(circle at 85% 40%, rgba(212, 183, 131, 0.5), transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(216, 178, 196, 0.5), transparent 55%),
+        linear-gradient(145deg, #fdfbf7 0%, #f7f1e6 40%, #f0e6d3 100%);
       background-attachment: fixed;
     }
 
     .title-gradient {
-      background: linear-gradient(135deg, #4a3f2c 30%, #a9803f 100%);
+      background: linear-gradient(135deg, #3a3122 20%, #b89255 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 32px 0 rgba(184, 146, 85, 0.15);
+    }
+
     .petal {
       position: fixed;
       bottom: -40px;
-      font-size: 22px;
       line-height: 1;
       will-change: transform, opacity;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      height: 1.5px;
+      width: 70px;
+      background: linear-gradient(to right, transparent, #d4b783 50%, transparent);
+    }
+
+    .divider-icon {
+      color: #b89255;
+      font-size: 1.4rem;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(184, 146, 85, 0.3));
+    }
+
+    /* Envelope Specific 3D Setup */
+    .preserve-3d {
+      transform-style: preserve-3d;
+    }
+
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -124,6 +168,7 @@
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
       }
+
       .petal {
         display: none;
       }
@@ -131,140 +176,437 @@
   </style>
 </head>
 
-<body class="relative min-h-screen text-ink overflow-x-hidden antialiased">
+<body id="body-container" class="relative min-h-screen text-ink overflow-x-hidden antialiased h-screen overflow-hidden">
 
-  <div class="fixed -top-32 -left-32 w-[420px] h-[420px] rounded-full blur-[60px] opacity-55 pointer-events-none z-0"
-    style="background:radial-gradient(circle, rgba(201,168,106,0.35), transparent 70%);" aria-hidden="true"></div>
+  <!-- Enhanced Background Orbs -->
   <div
-    class="fixed -bottom-24 -right-24 w-[380px] h-[380px] rounded-full blur-[60px] opacity-55 pointer-events-none z-0 animate-floaty2"
-    style="background:radial-gradient(circle, rgba(201,168,106,0.3), transparent 70%);" aria-hidden="true"></div>
+    class="fixed -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-[100px] opacity-70 pointer-events-none z-0 animate-floaty1"
+    style="background:radial-gradient(circle, rgba(212,183,131,0.45), transparent 70%);"></div>
   <div
-    class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] rounded-full blur-[60px] opacity-55 pointer-events-none z-0 animate-pulseglow"
-    style="background:radial-gradient(circle, rgba(169,128,63,0.18), transparent 70%);" aria-hidden="true"></div>
-  <div class="fixed -top-32 -left-32 w-[420px] h-[420px] rounded-full pointer-events-none z-0 animate-floaty1"
-    aria-hidden="true"></div>
+    class="fixed -bottom-32 -right-32 w-[550px] h-[550px] rounded-full blur-[100px] opacity-70 pointer-events-none z-0 animate-floaty2"
+    style="background:radial-gradient(circle, rgba(216,178,196,0.4), transparent 70%);"></div>
 
-  <!-- Floating petals -->
-  <div class="petal pointer-events-none z-0 animate-drift" style="left:6%; animation-duration:22s; animation-delay:0s;" aria-hidden="true">🌸</div>
-  <div class="petal pointer-events-none z-0 animate-driftrev" style="left:18%; font-size:16px; animation-duration:26s; animation-delay:3s;" aria-hidden="true">✿</div>
-  <div class="petal pointer-events-none z-0 animate-drift" style="left:32%; font-size:14px; animation-duration:19s; animation-delay:6s;" aria-hidden="true">❁</div>
-  <div class="petal pointer-events-none z-0 animate-driftrev" style="left:48%; animation-duration:28s; animation-delay:1.5s;" aria-hidden="true">🌸</div>
-  <div class="petal pointer-events-none z-0 animate-drift" style="left:62%; font-size:15px; animation-duration:24s; animation-delay:8s;" aria-hidden="true">✿</div>
-  <div class="petal pointer-events-none z-0 animate-driftrev" style="left:75%; font-size:18px; animation-duration:21s; animation-delay:4s;" aria-hidden="true">🌸</div>
-  <div class="petal pointer-events-none z-0 animate-drift" style="left:88%; font-size:14px; animation-duration:27s; animation-delay:10s;" aria-hidden="true">❁</div>
-  <div class="petal pointer-events-none z-0 animate-driftrev" style="left:96%; font-size:16px; animation-duration:23s; animation-delay:5s;" aria-hidden="true">✿</div>
+  <!-- Smoother Floating Petals -->
+  <div class="petal pointer-events-none z-0 animate-drift"
+    style="left:8%; font-size:26px; animation-duration:22s; animation-delay:0s;">🌸</div>
+  <div class="petal pointer-events-none z-0 animate-driftrev"
+    style="left:20%; font-size:18px; animation-duration:26s; animation-delay:3s;">✿</div>
+  <div class="petal pointer-events-none z-0 animate-drift"
+    style="left:38%; font-size:20px; animation-duration:24s; animation-delay:7s;">❁</div>
+  <div class="petal pointer-events-none z-0 animate-driftrev"
+    style="left:58%; font-size:24px; animation-duration:28s; animation-delay:1s;">🌸</div>
+  <div class="petal pointer-events-none z-0 animate-drift"
+    style="left:75%; font-size:18px; animation-duration:25s; animation-delay:11s;">✿</div>
+  <div class="petal pointer-events-none z-0 animate-driftrev"
+    style="left:88%; font-size:22px; animation-duration:23s; animation-delay:4s;">🌸</div>
 
-  <div class="relative z-10 max-w-[640px] mx-auto px-5 pt-8 sm:pt-10 pb-16">
+  <!-- ENVELOPE OVERLAY -->
+  <div id="envelope-wrapper"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-white/40 backdrop-blur-xl transition-all duration-[1500ms] ease-[cubic-bezier(0.4,0,0.2,1)]">
 
-    <div class="text-center pt-3 text-gold text-xl tracking-[6px] opacity-0 animate-fadeDown">
-      🦢 · ✦ · 🦢
+    <!-- Glowing Aura Behind Envelope -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div
+        class="w-[400px] h-[400px] rounded-full bg-gradient-to-r from-[#d4b783]/30 to-[#b89255]/30 blur-[60px] animate-pulseglow">
+      </div>
     </div>
 
-    <header class="text-center mt-2 mb-7 opacity-0 animate-fadeDown [animation-delay:.1s]">
-      <p class="font-serifsi font-medium text-inksoft tracking-wide text-[15px] sm:text-base m-0">
-        විවාහ ගිවිස ගැනීමේ උත්සවය
+    <!-- The Envelope -->
+    <div id="envelope-container"
+      class="relative w-[90vw] max-w-[420px] aspect-[1.45/1] cursor-pointer group transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03]"
+      style="perspective: 2000px;" onclick="openEnvelope()">
+
+      <!-- Envelope Body (Back) -->
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-[#e8d5b5] to-[#c9b183] rounded-xl shadow-envelope z-0 border border-[#f5ead5]/50 overflow-hidden">
+        <!-- Subtle paper texture overlay -->
+        <div class="absolute inset-0 opacity-10"
+          style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: multiply;">
+        </div>
+      </div>
+
+      <!-- The Letter Inside (Scaled to fit the envelope width) -->
+      <!-- Letter Mask Wrapper (Hides the bottom of the tall letter so it doesn't poke out) -->
+      <div class="absolute inset-0 z-10" style="clip-path: inset(-200% -20px 0 -20px);">
+
+        <!-- The Letter Inside (Now allowed to be its full height) -->
+        <div id="env-letter"
+          class="absolute inset-x-1.5 top-1.5 transition-all duration-[1200ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+          <!-- Changed to h-auto so the image dictates its natural uncropped length -->
+          <img src="invitation.png" alt="සඳුනිකා සහ තිමේෂ - ආරාධනා පත්‍රය"
+            class="w-full h-auto block rounded-[8px] shadow-md bg-white">
+        </div>
+
+      </div>
+
+      <!-- Envelope Front (Sides & Bottom Polygons) -->
+      <div
+        class="absolute inset-0 z-20 pointer-events-none rounded-xl overflow-hidden shadow-[inset_0_-10px_20px_rgba(0,0,0,0.04)]">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#e3cba3] via-[#edd8b6] to-[#f2e2c6]"
+          style="clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);">
+          <div class="absolute inset-0 opacity-10"
+            style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');">
+          </div>
+        </div>
+      </div>
+
+      <!-- Envelope Flap (Top) -->
+      <div id="env-flap"
+        class="absolute top-0 left-0 w-full h-[68%] z-30 transition-transform duration-[1000ms] ease-[cubic-bezier(0.45,0,0.55,1)] origin-top">
+
+        <!-- Outside texture -->
+        <div id="env-flap-outside"
+          class="absolute inset-0 bg-gradient-to-b from-[#f7ebd4] to-[#deb97a] rounded-t-xl shadow-[0_8px_20px_rgba(138,107,60,0.25)] transition-opacity duration-150"
+          style="clip-path: polygon(0 0, 100% 0, 50% 100%);">
+          <div class="absolute inset-0 opacity-10"
+            style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');">
+          </div>
+        </div>
+
+        <!-- Inside texture -->
+        <div id="env-flap-inside"
+          class="absolute inset-0 bg-gradient-to-t from-[#c9b183] to-[#ebd7b5] rounded-t-xl opacity-0 transition-opacity duration-150"
+          style="clip-path: polygon(0 0, 100% 0, 50% 100%);"></div>
+
+        <!-- Deluxe Wax Seal -->
+        <div id="env-seal"
+          class="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#c9a86a] via-[#a9803f] to-[#785724] rounded-full shadow-[0_10px_25px_rgba(138,107,60,0.6),inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-4px_8px_rgba(0,0,0,0.3)] flex items-center justify-center text-white/95 transition-all duration-700 z-40 border border-[#e3cba3]/60 group-hover:shadow-[0_15px_35px_rgba(138,107,60,0.8)]">
+          <svg class="w-7 h-7 sm:w-9 sm:h-9 drop-shadow-[0_2px_3px_rgba(0,0,0,0.4)]" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+          <!-- Shine effect on seal -->
+          <div class="absolute inset-0 rounded-full overflow-hidden">
+            <div class="w-[200%] h-full bg-white/20 -skew-x-[45deg] animate-shimmer absolute top-0 -left-[100%]"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Hint -->
+      <div id="env-hint"
+        class="absolute -bottom-20 left-0 right-0 text-center text-[#5c503b] font-serifsi text-[18px] font-medium tracking-widest transition-all duration-500 flex flex-col items-center gap-2 opacity-80 group-hover:opacity-100">
+        විවෘත කිරීමට ඔබන්න
+        <svg class="w-5 h-5 animate-bounce text-[#b89255]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (Initially hidden/blurred) -->
+  <div id="main-content"
+    class="relative z-10 max-w-[680px] mx-auto px-6 pt-12 sm:pt-16 pb-24 opacity-0 blur-lg translate-y-20 transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none scale-95">
+
+    <div class="text-center text-[#d4b783] text-3xl tracking-[12px] opacity-0 animate-fadeDown mb-6 drop-shadow-sm">
+      <span class="inline-block -scale-x-100 mr-4">🦢</span> ❁ 🦢
+    </div>
+
+    <header class="text-center mb-12 opacity-0 animate-fadeDown [animation-delay:.2s]">
+      <p class="font-serifsi font-semibold text-[#5c503b] tracking-[0.2em] text-[17px] sm:text-[20px] uppercase m-0">
+        විවාහ ගිවිසගැනීමේ උත්සවය
       </p>
     </header>
 
+    <!-- Upgraded Image Frame -->
     <div
-      class="bg-offwhite rounded-[22px] p-3.5 shadow-deep border border-gold/20 opacity-0 animate-heroIn transition-transform duration-500 hover:-translate-y-1.5 hover:shadow-deeper">
-      <img src="invitation.png" alt="සඳුනිකා සහ තිමේෂ - ආරාධනා පත්‍රය" class="w-full block rounded-xl">
+      class="glass-panel rounded-[40px] p-4 sm:p-6 opacity-0 animate-heroIn transition-all duration-700 hover:-translate-y-3 hover:shadow-deeper group">
+      <div class="overflow-hidden rounded-[24px] border border-gold/15 shadow-inner bg-white/50">
+        <img src="invitation.png" alt="සඳුනිකා සහ තිමේෂ - ආරාධනා පත්‍රය"
+          class="w-full block transition-transform duration-[1500ms] ease-out group-hover:scale-105">
+      </div>
     </div>
 
-    <div class="text-center mt-4 text-goldlight text-2xl animate-bob">⌄</div>
+    <div class="text-center mt-12 text-[#d4b783] text-4xl animate-bob opacity-80">
+      <svg class="w-8 h-8 mx-auto filter drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </div>
 
-    <section id="countdown-section" class="reveal opacity-0 translate-y-7 transition-all duration-700 ease-out mt-14">
-      <div class="flex items-center justify-center gap-2.5 text-goldlight mb-4">
-        <span class="h-px w-14 bg-gradient-to-r from-transparent to-goldlight"></span>
-        <span class="text-sm">✦</span>
-        <span class="h-px w-14 bg-gradient-to-l from-transparent to-goldlight"></span>
-      </div>
-      <h2 class="text-center font-serifsi font-bold text-[22px] sm:text-[27px] title-gradient mb-2">මුහුර්තයට තව...</h2>
-      <p class="text-center text-inksoft text-[15px] mb-6">2026 බිනර මස 24 වන ගුරු දින, පූර්ව භාග 10:15</p>
-      <div class="flex justify-center gap-3.5 flex-wrap" id="countdown">
+    <!-- Redesigned Countdown -->
+    <section id="countdown-section"
+      class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out mt-20">
+      <div class="divider"><span class="divider-icon">🦢</span></div>
+      <h2 class="text-center font-serifsi font-bold text-[28px] sm:text-[34px] title-gradient mb-4 drop-shadow-sm">
+        මුහුර්තයට තව...</h2>
+      <p class="text-center text-[#5c503b] text-[17px] mb-10 font-medium tracking-wide">2026 බිනර මස 24 වන ගුරු දින,
+        පෙ.ව. 10:15</p>
+
+      <div class="flex justify-center gap-3 sm:gap-5 flex-wrap" id="countdown">
         <div
-          class="bg-offwhite/70 backdrop-blur-md border border-gold/30 rounded-2xl px-3 py-4 min-w-[82px] text-center shadow-soft transition-transform hover:-translate-y-1">
-          <div class="font-serifsi text-3xl font-bold text-gold leading-none" id="cd-days">--</div>
-          <div class="mt-1.5 text-[13px] text-inksoft">දින</div>
+          class="glass-panel rounded-[30px] px-2 py-7 w-[90px] sm:w-[100px] flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glasshover hover:bg-white/70 border-t-2 border-t-white/80">
+          <div class="font-serifsi text-4xl sm:text-5xl font-bold text-[#b89255] leading-none drop-shadow-sm"
+            id="cd-days">--</div>
+          <div class="mt-3 text-[14px] font-semibold text-[#5c503b] uppercase tracking-widest">දින</div>
         </div>
         <div
-          class="bg-offwhite/70 backdrop-blur-md border border-gold/30 rounded-2xl px-3 py-4 min-w-[82px] text-center shadow-soft transition-transform hover:-translate-y-1">
-          <div class="font-serifsi text-3xl font-bold text-gold leading-none" id="cd-hours">--</div>
-          <div class="mt-1.5 text-[13px] text-inksoft">පැය</div>
+          class="glass-panel rounded-[30px] px-2 py-7 w-[90px] sm:w-[100px] flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glasshover hover:bg-white/70 border-t-2 border-t-white/80">
+          <div class="font-serifsi text-4xl sm:text-5xl font-bold text-[#b89255] leading-none drop-shadow-sm"
+            id="cd-hours">--</div>
+          <div class="mt-3 text-[14px] font-semibold text-[#5c503b] uppercase tracking-widest">පැය</div>
         </div>
         <div
-          class="bg-offwhite/70 backdrop-blur-md border border-gold/30 rounded-2xl px-3 py-4 min-w-[82px] text-center shadow-soft transition-transform hover:-translate-y-1">
-          <div class="font-serifsi text-3xl font-bold text-gold leading-none" id="cd-mins">--</div>
-          <div class="mt-1.5 text-[13px] text-inksoft">මිනිත්තු</div>
+          class="glass-panel rounded-[30px] px-2 py-7 w-[90px] sm:w-[100px] flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glasshover hover:bg-white/70 border-t-2 border-t-white/80">
+          <div class="font-serifsi text-4xl sm:text-5xl font-bold text-[#b89255] leading-none drop-shadow-sm"
+            id="cd-mins">--</div>
+          <div class="mt-3 text-[14px] font-semibold text-[#5c503b] uppercase tracking-widest">මිනිත්තු</div>
         </div>
         <div
-          class="bg-offwhite/70 backdrop-blur-md border border-gold/30 rounded-2xl px-3 py-4 min-w-[82px] text-center shadow-soft transition-transform hover:-translate-y-1">
-          <div class="font-serifsi text-3xl font-bold text-gold leading-none" id="cd-secs">--</div>
-          <div class="mt-1.5 text-[13px] text-inksoft">තත්පර</div>
+          class="glass-panel rounded-[30px] px-2 py-7 w-[90px] sm:w-[100px] flex flex-col items-center justify-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glasshover hover:bg-white/70 border-t-2 border-t-white/80">
+          <div class="font-serifsi text-4xl sm:text-5xl font-bold text-[#b89255] leading-none drop-shadow-sm"
+            id="cd-secs">--</div>
+          <div class="mt-3 text-[14px] font-semibold text-[#5c503b] uppercase tracking-widest">තත්පර</div>
         </div>
       </div>
     </section>
 
-    <section id="location-section" class="reveal opacity-0 translate-y-7 transition-all duration-700 ease-out mt-14">
-      <div class="flex items-center justify-center gap-2.5 text-goldlight mb-4">
-        <span class="h-px w-14 bg-gradient-to-r from-transparent to-goldlight"></span>
-        <span class="text-sm">✦</span>
-        <span class="h-px w-14 bg-gradient-to-l from-transparent to-goldlight"></span>
-      </div>
-      <h2 class="text-center font-serifsi font-bold text-[22px] sm:text-[27px] title-gradient mb-2">ස්ථානය</h2>
+    <!-- Redesigned Location -->
+    <section id="location-section"
+      class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out mt-24">
+      <div class="divider"><span class="divider-icon">🦢</span></div>
+      <h2 class="text-center font-serifsi font-bold text-[28px] sm:text-[34px] title-gradient mb-5 drop-shadow-sm">
+        ස්ථානය</h2>
       <div
-        class="bg-offwhite/70 backdrop-blur-md border border-gold/25 rounded-[20px] px-6 py-7 text-center shadow-soft transition-shadow hover:shadow-deep">
-        <p class="font-serifsi text-[21px] font-semibold mb-1.5">ගම්පොල නිවසේදී</p>
-        <p class="text-inksoft text-[15px] mb-5">2026 සැප්තැම්බර් 24 වන ගුරු දින &nbsp;•&nbsp; පූර්ව භාග 10:15 සිට</p>
-        <!-- TODO: replace the Google Maps link below with your exact address / map link before publishing -->
+        class="glass-panel rounded-[32px] px-8 py-12 text-center transition-all duration-500 hover:shadow-glasshover group border-t-2 border-t-white/80">
+        <p class="font-serifsi text-[26px] font-bold mb-3 text-[#3a3122]">ගම්පොල නිවසේදී</p>
+        <p class="text-[#5c503b] text-[17px] mb-10 font-medium tracking-wide">2026 සැප්තැම්බර් 24 වන ගුරු දින
+          &nbsp;•&nbsp; පෙ.ව. 10:15 සිට</p>
+
         <a href="https://maps.app.goo.gl/PfvGFcbiyv9R7BJL7" target="_blank" rel="noopener"
-          class="inline-block px-7 py-3 rounded-full text-[15px] font-medium text-offwhite bg-gradient-to-br from-goldlight to-gold shadow-[0_10px_26px_rgba(169,128,63,0.4)] transition-transform hover:-translate-y-1 hover:scale-[1.03] hover:brightness-105">
+          class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full text-[17px] font-bold text-white bg-gradient-to-r from-[#d4b783] via-[#b89255] to-[#a9803f] shadow-[0_15px_35px_rgba(184,146,85,0.4)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(184,146,85,0.55)] hover:bg-[length:150%_auto] bg-[length:100%_auto]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
           සිතියමෙන් බලන්න
         </a>
       </div>
     </section>
 
-    <section id="rsvp-section" class="reveal opacity-0 translate-y-7 transition-all duration-700 ease-out mt-14">
-      <div class="flex items-center justify-center gap-2.5 text-goldlight mb-4">
-        <span class="h-px w-14 bg-gradient-to-r from-transparent to-goldlight"></span>
-        <span class="text-sm">✦</span>
-        <span class="h-px w-14 bg-gradient-to-l from-transparent to-goldlight"></span>
-      </div>
-      <h2 class="text-center font-serifsi font-bold text-[22px] sm:text-[27px] title-gradient mb-2">පැමිණීම තහවුරු කරන්න
-      </h2>
-      <p class="text-center text-inksoft text-[15px] mb-6">ඔබගේ පැමිණීම කරුණාකර පහත ක්‍රමයකින් තහවුරු කරන්න</p>
-      <div class="text-center">
-        <!-- TODO: replace with your real WhatsApp number (country code, no + or spaces) -->
+    <!-- Redesigned RSVP -->
+    <section id="rsvp-section" class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out mt-24">
+      <div class="divider"><span class="divider-icon">🦢</span></div>
+      <h2 class="text-center font-serifsi font-bold text-[28px] sm:text-[34px] title-gradient mb-5 drop-shadow-sm">
+        පැමිණීම තහවුරු කරන්න</h2>
+      <p class="text-center text-[#5c503b] text-[17px] mb-10 tracking-wide">කරුණාකර පහත ෆෝරමය පුරවා ඔබගේ පැමිණීම
+        තහවුරු කරන්න</p>
+
+      <form id="rsvp-form"
+        class="glass-panel rounded-[32px] px-6 sm:px-10 py-10 max-w-md mx-auto flex flex-col gap-5 border-t-2 border-t-white/80">
+        <div class="flex flex-col gap-2 text-left">
+          <label for="rsvp-name" class="text-[14px] font-semibold text-[#5c503b] tracking-wide">නම</label>
+          <input id="rsvp-name" name="name" type="text" required placeholder="ඔබගේ නම"
+            class="w-full rounded-2xl border border-[#d4b783]/40 bg-white/70 px-5 py-3 text-[#3a3122] placeholder:text-[#a89b7d] focus:outline-none focus:ring-2 focus:ring-[#b89255]/50">
+        </div>
+        <div class="flex flex-col gap-2 text-left">
+          <label for="rsvp-guests" class="text-[14px] font-semibold text-[#5c503b] tracking-wide">පැමිණෙන
+            සංඛ්‍යාව</label>
+          <input id="rsvp-guests" name="guests" type="number" min="1" value="1" required
+            class="w-full rounded-2xl border border-[#d4b783]/40 bg-white/70 px-5 py-3 text-[#3a3122] focus:outline-none focus:ring-2 focus:ring-[#b89255]/50">
+        </div>
+        <div class="flex flex-col gap-2 text-left">
+          <label for="rsvp-message" class="text-[14px] font-semibold text-[#5c503b] tracking-wide">පණිවිඩයක්
+            (අත්‍යවශ්‍ය නොවේ)</label>
+          <textarea id="rsvp-message" name="message" rows="3"
+            class="w-full rounded-2xl border border-[#d4b783]/40 bg-white/70 px-5 py-3 text-[#3a3122] focus:outline-none focus:ring-2 focus:ring-[#b89255]/50"></textarea>
+        </div>
+        <button type="submit" id="rsvp-submit"
+          class="mt-2 inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full text-[17px] font-bold text-white bg-gradient-to-r from-[#d4b783] via-[#b89255] to-[#a9803f] shadow-[0_15px_35px_rgba(184,146,85,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(184,146,85,0.55)] disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0">
+          තහවුරු කරන්න
+        </button>
+        <p id="rsvp-status" class="text-[15px] font-medium text-center mt-1" hidden></p>
+      </form>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact-section"
+      class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out mt-24">
+      <div class="divider"><span class="divider-icon">🦢</span></div>
+      <h2 class="text-center font-serifsi font-bold text-[28px] sm:text-[34px] title-gradient mb-5 drop-shadow-sm">
+        අප අමතන්න</h2>
+      <p class="text-center text-[#5c503b] text-[17px] mb-10 tracking-wide">ප්‍රශ්නයක් ඇත්නම් කරුණාකර පහත ක්‍රමයකින්
+        අප අමතන්න</p>
+
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
         <a href="https://wa.me/94710130081" target="_blank" rel="noopener"
-          class="inline-block m-1.5 px-7 py-3 rounded-full text-[15px] font-medium text-offwhite bg-gradient-to-br from-goldlight to-gold shadow-[0_10px_26px_rgba(169,128,63,0.4)] transition-transform hover:-translate-y-1 hover:scale-[1.03] hover:brightness-105">
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full text-[17px] font-bold text-white bg-gradient-to-r from-[#d4b783] to-[#b89255] shadow-[0_15px_35px_rgba(184,146,85,0.35)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_45px_rgba(184,146,85,0.5)]">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
           WhatsApp මගින්
         </a>
-        <!-- TODO: replace with your real phone number -->
         <a href="tel:+94752566065"
-          class="inline-block m-1.5 px-7 py-3 rounded-full text-[15px] font-medium text-gold border-[1.5px] border-goldlight transition-transform hover:-translate-y-1 hover:scale-[1.03]">
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full text-[17px] font-bold text-[#b89255] glass-panel border-2 border-[#d4b783]/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-glasshover hover:bg-white/80 hover:border-[#b89255]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+            </path>
+          </svg>
           අමතන්න
         </a>
       </div>
     </section>
 
     <footer
-      class="reveal opacity-0 translate-y-7 transition-all duration-700 ease-out text-center mt-16 text-inksoft font-serifsi text-base">
-      <span class="block text-gold font-bold text-xl mb-1.5 tracking-wide">සඳුනිකා 💛 තිමේෂ</span>
+      class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out text-center mt-32 text-[#5c503b] font-serifsi text-[19px] tracking-wide">
+      <span
+        class="block text-transparent bg-clip-text bg-gradient-to-r from-[#a9803f] via-[#d4b783] to-[#a9803f] font-bold text-3xl mb-3 tracking-widest drop-shadow-sm">සඳුනිකා
+        <span class="text-rosegold text-2xl mx-1">🤍</span> තිමේෂ</span>
       ඔබගේ පැමිණීම අප වෙත මහත් සතුටක්
     </footer>
+
     <div
-      class="reveal opacity-0 translate-y-7 transition-all duration-700 ease-out text-center mt-5 text-goldlight text-xl tracking-[6px]">
-      ✦ ❁ ✦</div>
+      class="reveal opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out text-center mt-10 text-[#d4b783] text-3xl tracking-[12px] opacity-70 drop-shadow-sm">
+      <span class="inline-block -scale-x-100  mr-4">🦢</span> ❁ 🦢
+    </div>
   </div>
 
   <script>
-    // Engagement date/time: 24 September 2026, 10:15 AM, Asia/Colombo (UTC+05:30)
+    /* Premium Envelope Animation Sequence */
+    let isOpened = false;
+
+    function openEnvelope() {
+      if (isOpened) return;
+      isOpened = true;
+
+      const container = document.getElementById('envelope-container');
+      const flap = document.getElementById('env-flap');
+      const letter = document.getElementById('env-letter');
+      const seal = document.getElementById('env-seal');
+      const hint = document.getElementById('env-hint');
+      const wrapper = document.getElementById('envelope-wrapper');
+      const body = document.getElementById('body-container');
+      const mainContent = document.getElementById('main-content');
+
+      const heroPanel = document.querySelector('.glass-panel.group');
+      const targetImg = mainContent.querySelector('img');
+
+      // 1. Initial click reaction
+      container.style.transform = 'scale(0.96)';
+      if (hint) hint.style.opacity = '0';
+      if (seal) {
+        seal.style.transform = 'translate(-50%, 0) scale(1.5)';
+        seal.style.opacity = '0';
+      }
+
+      const FLAP_OPEN_MS = 1000;
+      const LETTER_OUT_MS = 900;
+      const FLY_MS = 1200;
+
+      setTimeout(() => {
+        // 2. Open the flap
+        container.style.transform = 'scale(1)';
+        flap.style.transform = 'rotateX(-180deg)';
+
+        var flapOutside = document.getElementById('env-flap-outside');
+        var flapInside = document.getElementById('env-flap-inside');
+        setTimeout(() => {
+          if (flapOutside) flapOutside.style.opacity = '0';
+          if (flapInside) flapInside.style.opacity = '1';
+        }, FLAP_OPEN_MS * 0.48);
+
+        setTimeout(() => {
+          // Drop the opened flap to the back so the letter can slide over it
+          flap.style.zIndex = '5';
+
+          // 3. Slide letter completely UP straight (Removed the scale so it doesn't distort inside the envelope)
+          letter.style.transform = 'translateY(-180px) scale(1)';
+
+          setTimeout(() => {
+            // 4. Detach and Morph
+            const startImg = letter.querySelector('img');
+            const startRect = startImg.getBoundingClientRect();
+
+            const flyingImg = startImg.cloneNode(true);
+            flyingImg.id = 'flying-letter';
+            flyingImg.style.position = 'fixed';
+            flyingImg.style.left = startRect.left + 'px';
+            flyingImg.style.top = startRect.top + 'px';
+            flyingImg.style.width = startRect.width + 'px';
+            flyingImg.style.height = startRect.height + 'px';
+            flyingImg.style.margin = '0';
+            flyingImg.style.transform = 'none';
+            flyingImg.style.zIndex = '9999';
+            flyingImg.style.objectFit = 'cover';
+            flyingImg.className = 'rounded-[8px] shadow-[0_25px_50px_rgba(184,146,85,0.4)]';
+
+            document.body.appendChild(flyingImg);
+            letter.style.opacity = '0';
+
+            // 5. Drop the empty envelope FIRST
+            container.style.transition = `transform ${FLY_MS * 0.8}ms cubic-bezier(0.55, 0.05, 0.68, 0.19), opacity ${FLY_MS * 0.7}ms ease-in`;
+
+            // Tumbles on X, Y, and Z axes while scaling down to simulate falling away
+            container.style.transform = 'translateY(120vh) rotateX(45deg) rotateY(20deg) rotateZ(15deg) scale(0.7)';
+            container.style.opacity = '0';
+
+            // Snap main site to its final resting place INVISIBLY
+            mainContent.style.transition = 'none';
+            mainContent.classList.remove('blur-lg', 'translate-y-20', 'scale-95', 'opacity-0', 'pointer-events-none');
+            mainContent.style.opacity = '0';
+
+            if (heroPanel) {
+              heroPanel.style.transition = 'none';
+              heroPanel.classList.remove('animate-heroIn', 'opacity-0');
+              heroPanel.style.transform = 'none';
+              heroPanel.style.opacity = '0';
+            }
+
+            // --- THE FIX: Restore the scrollbar BEFORE measuring coordinates ---
+            body.classList.remove('h-screen', 'overflow-hidden');
+
+            // Force browser layout reflow
+            void mainContent.offsetWidth;
+            const targetRect = targetImg.getBoundingClientRect();
+
+            // 6. Wait a tiny moment for the envelope to drop, THEN zoom the letter
+            setTimeout(() => {
+              flyingImg.style.transition = `all ${FLY_MS}ms cubic-bezier(0.34, 1.56, 0.64, 1)`;
+
+              requestAnimationFrame(() => {
+                // Fly the image dynamically to perfectly match the final frame
+                flyingImg.style.left = targetRect.left + 'px';
+                flyingImg.style.top = targetRect.top + 'px';
+                flyingImg.style.width = targetRect.width + 'px';
+                flyingImg.style.height = targetRect.height + 'px';
+                flyingImg.style.borderRadius = '24px';
+
+                // Crossfade the backgrounds
+                wrapper.style.transition = `opacity ${FLY_MS}ms ease`;
+                wrapper.style.opacity = '0';
+
+                mainContent.style.transition = `opacity ${FLY_MS}ms ease`;
+                mainContent.style.opacity = '1';
+
+                // 7. Clean up
+                setTimeout(() => {
+                  wrapper.style.display = 'none';
+
+                  if (heroPanel) {
+                    heroPanel.style.opacity = '1';
+                  }
+
+                  flyingImg.remove();
+                }, FLY_MS);
+              });
+            }, 200);
+
+          }, LETTER_OUT_MS);
+        }, FLAP_OPEN_MS);
+      }, 300);
+    }
+
+    /* Countdown Logic */
     var eventDate = new Date("2026-09-24T10:15:00+05:30").getTime();
     var lastVals = {};
 
     function tickAnim(el) {
       el.classList.remove('animate-tick');
-      void el.offsetWidth; // restart animation
+      void el.offsetWidth;
       el.classList.add('animate-tick');
     }
 
@@ -274,7 +616,7 @@
 
       if (diff <= 0) {
         var cd = document.getElementById('countdown');
-        if (cd) cd.outerHTML = '<div class="font-serifsi text-xl font-semibold text-gold py-3.5">අද මුහුර්තයයි! 🎉</div>';
+        if (cd) cd.outerHTML = '<div class="glass-panel rounded-[30px] px-10 py-8 font-serifsi text-3xl font-bold text-[#b89255] text-center animate-fadeDown shadow-glasshover border-t-2 border-white">අද මුහුර්තයයි! 🎉</div>';
         return;
       }
 
@@ -300,10 +642,55 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Reveal-on-scroll
+    /* RSVP Logic */
+    var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKPFgazDbxJwe7BF5aCikWgXiEn4DNrkQJb0wXGPUfEOw0LwQAY-TS50ngFFf6my1xyA/exec';
+
+    var rsvpForm = document.getElementById('rsvp-form');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var statusEl = document.getElementById('rsvp-status');
+        var submitBtn = document.getElementById('rsvp-submit');
+
+        function showStatus(text, isError) {
+          statusEl.textContent = text;
+          statusEl.hidden = false;
+          statusEl.style.color = isError ? '#b3452c' : '#3f7a4a';
+        }
+
+        if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.indexOf('PASTE_YOUR') !== -1) {
+          showStatus('RSVP සැකසුම තවම සම්පූර්ණ නැත. කරුණාකර WhatsApp මගින් අප අමතන්න.', true);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        var originalLabel = submitBtn.textContent;
+        submitBtn.textContent = 'යවමින්...';
+
+        var formData = new FormData(rsvpForm);
+
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formData
+        }).then(function () {
+          showStatus('ස්තූතියි! ඔබගේ පැමිණීම තහවුරු විය.', false);
+          rsvpForm.reset();
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }).catch(function () {
+          showStatus('යැවීමට නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න හෝ WhatsApp මගින් අප අමතන්න.', true);
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        });
+      });
+    }
+
+    /* Cinematic Scroll Reveal */
     var revealEls = document.querySelectorAll('.reveal');
     function showReveal(el) {
-      el.classList.remove('opacity-0', 'translate-y-7');
+      el.classList.remove('opacity-0', 'translate-y-12');
       el.classList.add('opacity-100', 'translate-y-0');
     }
     if ('IntersectionObserver' in window) {
@@ -314,7 +701,7 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.12 });
       revealEls.forEach(function (el) { io.observe(el); });
     } else {
       revealEls.forEach(showReveal);
